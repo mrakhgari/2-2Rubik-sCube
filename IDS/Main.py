@@ -6,11 +6,12 @@ states = [[4, 4, 2, 2], [1, 3, 5, 6], [1, 1, 5, 5],
 
 def update_states(states, index, direction):
     # for right turn direction must be 1 and for left turn must be -1
-    if direction is 1 :
-        states[index][0:2], states[index][2:4] = states[index][2::-2], states[index][4:0:-2]
+    if direction is 1:
+        states[index][0:2], states[index][2:4] = states[index][2::-
+            2], states[index][4:0:-2]
     else:
         states[index][0:2], states[index][2:4] = states[index][1::2], states[index][0::2]
-  
+
     # now rotate the neighbors.
     if index is 0:
         print("index was 1")
@@ -59,5 +60,12 @@ def update_states(states, index, direction):
                                                                         2] = states[1][0:4:2], states[4][2:4], states[3][1:4:2], states[0][0:2]
 
 
-_limit = map(int, input("Enter the limit: "))
+def goal_test(rubik):
+    # check all elements in one side is equal, for all sides 
+    for face in rubik:
+        if not all(elem == face[0] for elem in face):
+            return False
+    return True
 
+
+# _limit = map(int, input("Enter the limit: "))
