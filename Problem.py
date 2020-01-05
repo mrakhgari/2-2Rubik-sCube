@@ -14,10 +14,10 @@ dl = 9
 br = 10
 bl = 11
 
-actions = [ur, ul, rl, lr, ll, fr, fl, rr, rl, dr, dl, br, bl]
+actions = [ur, ul, lr, ll, fr, fl, rr, rl, dr, dl, br, bl]
 
 def child_node(node, action):
-    rubik = Rubik()
+    rubik = Rubik([]) # fuck me :|
     for face in node.get_state():
             rubik.get_state().append(face.copy())
     rubik.move(action)

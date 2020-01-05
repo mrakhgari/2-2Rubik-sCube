@@ -24,11 +24,22 @@ _yellow = 5
 
 class Rubik:
 
-    def __init__(self):
-        self.__state = [] 
+    def __init__(self, states = [], path_cost = 0):
+        self.path_cost = path_cost
+        self.__state = states 
     
+    # need for PriorityQueue
+    # def __cmp__(self, other):
+        # return cmp(self.path_cost, other.path_cost)
+
+    def __lt__(self, other):
+        return self.path_cost < other.path_cost
+
     def __repr__(self):
         return "Rubik instance"
+
+    def __contains__(self, m):
+        return self.__eq__(m)
 
     def __eq__(self, other):
         if not isinstance(other, Rubik):
@@ -56,7 +67,8 @@ class Rubik:
                 elif elm is _orange:
                     text += "o, "
             text += "],"
-        text += "]"
+        text += "]" 
+        text += str(self.path_cost)
         return text
 
     def __move_ur(self):
@@ -120,10 +132,11 @@ class Rubik:
                                                                                             2] = self.__state[1][2::-2], self.__state[4][2:4], self.__state[3][3::-2], self.__state[0][0:2]
     
     def move(self,action):
+        # fuck this shit :(
         if action % 2 == 0:
                 self.__state[action//2][0:2], self.__state[action//2][2:4] = self.__state[action//2][2::-2], self.__state[action//2][4:0:-2]
         else:
-                self.__state[action//2][0:2], self.__state[action//2][2:4] = self.__state[action//2][1::2], self.__state[action//2][0::2]
+                self.__state[(action-1)//2][0:2], self.__state[(action-1)//2][2:4] = self.__state[(action-1)//2][1::2], self.__state[(action-1)//2][0::2]
 
         if action is ur:
             self.__move_ur()
