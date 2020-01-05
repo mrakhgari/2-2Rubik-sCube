@@ -1,4 +1,3 @@
-from Problem import *
 # rubik class
 
 
@@ -21,6 +20,8 @@ _green = 2
 _orange = 3
 _red = 4
 _yellow = 5
+
+colors = [_white, _blue, _green, _orange, _red, _yellow]
 
 class Rubik:
 

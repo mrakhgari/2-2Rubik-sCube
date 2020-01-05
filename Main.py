@@ -1,5 +1,6 @@
 from UCS import UCS 
 from Rubik import Rubik
+from Bidirectional import *
 
 
 rubik_sides = []
@@ -22,6 +23,7 @@ rubik = Rubik([[_yellow, _yellow, _white, _white], [_blue, _green, _blue, _green
 
 # rubik = Rubik(rubik_sides)
 
-ucs = UCS(rubik)
-ucs.UCS()
+# ucs = UCS(rubik)
+# ucs.UCS()
+Bidirectional(rubik)
 # print(rubik)
